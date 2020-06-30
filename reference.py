@@ -15,14 +15,20 @@ def getLV(unipol, getHV = 'no'):
         """
         import numpy as np
         
+        
+        ### ------- CALCULATE VARIANCES FOR ALL THE CHANNELS ------- ###
         v = list()
         for i in range(unipol.shape[1]):
             v.append(np.var(unipol[:,i]));
-    
+        
+        
+        ### ------- GET AVERAGE VARIANCE AND ADD IT TO THE LIST ------- ###
         vAverage = np.mean(v)  
         v.append(vAverage)      
         v.sort()
     
+    
+        ### ------- SELECT CHANNELS WITH BELOW AVERAGE VARIANCE ------- ###
         vList = list()
         HV = list()
         for i in range(unipol.shape[1]):
@@ -33,13 +39,15 @@ def getLV(unipol, getHV = 'no'):
     
         below_average = unipol[:,vList]
         above_average = unipol[:,HV]     
-    #    below_average = np.transpose(below_average[:,0:-2])
+    
         
+        ### ------- RETURN THE DATASET ------- ###
         if getHV == 'no':
             return below_average
         else:
             return below_average, above_average
         
+ 
 
 
 def grs(unipol, **kwargs):
@@ -73,6 +81,8 @@ def grs(unipol, **kwargs):
 
         """
         
+        
+        ### ------- IMPORT DEPENDENCIES ------- ###
         try:
             from refsig import getref
             import numpy as np
@@ -82,6 +92,9 @@ def grs(unipol, **kwargs):
             print("Please (probably) use:  pip install "+e.name)
             return "Function not executed. Missing dependency"
         
+        
+        
+        ### ------- COLLECT THE FUNCTION PARAMTERERS ------- ###
         try:
             kwargs["unipoltype"]
         except:    
@@ -107,15 +120,29 @@ def grs(unipol, **kwargs):
         
         
         
+        
+        
+        ### ------- CHECK THE ORIENTATION OF THE DATASET -------- ###
+        if unipol.shape[0]<unipol.shape[1]:
+            unipol = np.transpose(unipol)
+        
+        
+        
+        
+        ### ------- GET THE BELOW-VARIANCE CHANNELS ------- ###
         if kwargs["dataset"] == 'lv':
             originial_data = unipol
             unipol = getLV(unipol)
             
         
+        
+        ### ------- CALCULATE THE REFERENCE SIGNAL ------- ###
         if kwargs["method"] == 'avg':
             ref = getref.avg(np.transpose(unipol))
         else:
             ref = getref.calc(np.transpose(unipol))
         
         
+        
+        ### ------- RETURN THE REFERENCE SIGNAL ------- ###
         return ref
