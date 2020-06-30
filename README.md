@@ -13,7 +13,7 @@ Usage:
 Help:
 
 	Parameters
-        ----------
+        ------
         unipol     : set of unipolar signals
         
         unipoltype : 'd' | 'pymef'  (default 'd')
