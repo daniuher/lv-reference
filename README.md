@@ -10,8 +10,8 @@ Usage:
 	ref_signal = reference.grs(unipol, **kwargs)
 	
 	
-
-	Help:
+Help:
+	reference.grs()
 	Parameters
         ------
         unipol     : set of unipolar signals
