@@ -41,4 +41,5 @@ Help:
         analysis gets saved alongside the dataset (not yet implemented)
 
 Publications:
-[D. Uher, P. Klimes, et al., "Stereo-electroencephalography (SEEG) reference based on low-variance signals," 2020 42nd Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC), Montreal, QC, Canada, 2020](https://pages.github.com/](https://ieeexplore.ieee.org/abstract/document/9175734/citations#citations)https://ieeexplore.ieee.org/abstract/document/9175734/citations#citations)
+
+	[D. Uher, P. Klimes, et al., "Stereo-electroencephalography (SEEG) reference based on low-variance signals," 2020 42nd Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC), Montreal, QC, Canada, 2020](https://ieeexplore.ieee.org/abstract/document/9175734/citations#citations)
